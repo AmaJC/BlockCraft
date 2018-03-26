@@ -4,7 +4,13 @@ let config = {
 	type: Phaser.AUTO,
 	width: 852,
 	height: 480,
-	scene: gameScene
+	scene: gameScene,
+	physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false
+        }
+    }
 };
 
 let game = new Phaser.Game(config);
@@ -24,17 +30,15 @@ gameScene.preload = function() {
 gameScene.create = function() {
 	let bg = this.add.sprite(0, 0, 'background');
 	bg.setOrigin(0,0);
-	this.player = this.add.sprite(40, this.sys.game.config.height / 2, 'player');
-	this.player.setScale(0.5);
-	this.isPlayerAlive = true;
 	cursors = game.input.keyboard.createCursorKeys();
+
+	this.players = [];
+	this.player = this.createPlayer(40, this.sys.game.config.height / 2);
+	this.players.push(this.player);
 };
 
 // Update game frame (called repeatedly)
 gameScene.update = function() {
-	if (!this.isPlayerAlive) {
-		return;
-	}
 	// check for active input
 	if (cursors.right.isDown) {
 		this.player.x += this.playerSpeed;
@@ -54,4 +58,16 @@ gameScene.gameOver = function() {
 	this.scene.manager.bootScene(this);
 }
 
+gameScene.createPlayer = function(x, y) {
+	var player = this.physics.add.image(x, y, 'player');
+	player.setScale(0.5);
+	player.isAlive = true;
+	player.setCollideWorldBounds(true);
+	player.setGravityY(200);
+	// player.body.bounce.y = 0.2;
+	// player.body.gravity.y = 300;
+	
+	//this.player = this.add.sprite(40, this.sys.game.config.height / 2, 'player');
+	return player;
+}
 
