@@ -18,7 +18,7 @@ function preload() {
 	game.load.image('background', 'assets/sky.jpg');
 	game.load.image('player', 'assets/player.png');
 	game.load.spritesheet('woof', 'assets/woof.png', 32, 32) // frameWidth, frameHeight
- 	this.game.load.tilemap('testmap', 'testMap.json', null, Phaser.Tilemap.TILED_JSON);
+ 	this.game.load.tilemap('testmap', 'testmap.json', null, Phaser.Tilemap.TILED_JSON);
     this.game.load.image('tiles', 'basictileset.png');
 };
  
