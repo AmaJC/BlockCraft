@@ -17,17 +17,7 @@ let marker
 function preload() {
 	game.load.image('background', 'assets/sky.jpg');
 	game.load.image('player', 'assets/player.png');
-	game.load.image('dirt', 'assets/dirt.jpg');
-	game.load.image('ground', 'assets/platform.png')
- 	game.load.image('diamond', 'assets/diamond.png')
 	game.load.spritesheet('woof', 'assets/woof.png', 32, 32) // frameWidth, frameHeight
-
-	// this.game.load.tilemap('tilemap', 'assets/basicMap.json', null, Phaser.Tilemap.TILED_JSON);
- //    this.game.load.image('tiles', 'assets/basictileset.png');
- 	// game.load.tilemap('map', 'assets/testMap_GroundLayer.csv');
- 	// game.load.tilemap('water', 'assets/testMap_WaterLayer.csv');
- 	// game.load.image('tileset', 'assets/basictileset.png')
-
  	this.game.load.tilemap('testmap', 'testMap.json', null, Phaser.Tilemap.TILED_JSON);
     this.game.load.image('tiles', 'basictileset.png');
 };
